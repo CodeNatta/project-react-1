@@ -5,6 +5,9 @@ import About from './Components/About';
 import Navbar from './Components/Navbar';
 import TextForm from './Components/TextForm';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import Calculations from './Components/Calculations';
+import Home from './Components/Home'
+import Footer from './Components/Footer';
 
 function App() {
   const [mode, setMode]=useState('light');
@@ -39,14 +42,17 @@ function App() {
   return (
     <>
     <Router>
-      <Navbar title= "Character Checker" aboutUs="About us" blog="Blogs" mode={mode} toggleMode={toggleMode}/>
+      <Navbar title= "DevTice" aboutUs="About us" calculation="Basic Calculator" mode={mode} toggleMode={toggleMode}/>
       <Alert alert={alert}/>
       <div className="container my-3">
         <Routes>
-          <Route path="/about" element={<About/>}/>
-          <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Enter your text Here to check words" mode={mode}/>}></Route>
+          <Route exact path='/' element={<Home mode={mode} toggleMode={toggleMode}/>} />
+          <Route path="/about" element={<About mode={mode} toggleMode={toggleMode}/>} />
+          <Route path ="/charcheck" element={<TextForm showAlert={showAlert} heading="Enter your text Here to check words" mode={mode}/>}></Route>
+          <Route path='/calculator' element={<Calculations showAlert={showAlert} heading="Calculator" mode={mode}/>}/>
         </Routes>
       </div>
+      <Footer mode={mode}/>
       </Router>
       </>
   );

@@ -55,11 +55,11 @@ export default function TextForm(props) {
     <button className="btn btn-primary  my-1 mx-1" onClick={handleCopyClick}>Copy text</button>
     <button className="btn btn-primary  my-1 mx-1" onClick={handleClearClick }>Clear</button>
     <div className="container my-3" style={{color: props.mode==='dark'?'white':'black'}}>
-        <h3> Your text summary: </h3>
-        <p>Your text has {text.split(' ').length} words and {text.length} Characters</p>
-        <p> {0.008* text.split(' ').length} Minutes to read</p>
-        <h3>Preview:</h3>
-        <p>{text.length>0?text:"Enter Something in the text box above"}</p>
+    <h2>Your text summary</h2>
+            <p>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p>
+            <p>{0.008 *  text.split(/\s+/).filter((element)=>{return element.length!==0}).length} Minutes read</p>
+            <h2>Preview</h2>
+            <p>{text.length>0?text:"Nothing to preview!"}</p>
     </div>
     </div>
     </>
